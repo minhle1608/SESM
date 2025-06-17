@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Admin_Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+
+    <title>ADMIN WEBSITE</title>
+
+    <link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/superfish.css" rel="stylesheet" type="text/css"
+        media="all">
+    <link href="css/left_menu.css" rel="stylesheet" type="text/css"
+        media="all">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+        media="all">
+    <script type="text/javascript" src="js/jquery-1.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/common_002.js"></script>
+    <script type="text/javascript" src="js/constants.js"></script>
+
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/ajaxsbmt.js"></script>
+
+    <script type="text/javascript" src="js/hoverIntent.js"></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+
+    <script type="text/javascript">
+        function alertS(stringTB, func) {
+            if (stringTB == undefined) {
+                alert('Mã này không tồn tại!');
+            } else {
+                alert(stringTB);
+            }
+            if (func != undefined) {
+                func();
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function search() {
+        }
+        // initialise plugins
+        jQuery(function () {
+            jQuery('ul.sf-menu').superfish();
+        });
+
+    </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="top_banner">
+            <div class="main_content">
+                <div class="conten_top_banner">
+                    <h1 style="width: 900px; float: left; text-align: center; font-size: 35px; padding-top: 20px; color: #0088CC">Nhanh chóng - An toàn - Hiệu quả</h1>
+                    <div class="login" align="center" style="width: 250px; float: right; margin-right: 50px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <center>
+		<div class="content">
+
+			<!--Begin left-->
+			<div class="left_main">
+        <div class="menu_left">
+            <div class="top_menu_left"><a href="" style="color:#FFF;"><img src="images/icon_main_menu.png"> <span>ADMINISTRATOR </span></a></div>
+             <div class="sub_main_menu"  id="main_menu_mon"> 
+                <span>NHÂN VIÊN</span> 
+            </div>
+            <ul style="display: block;" id="ul_main_menu_mon">
+                <li><a href="BacSy.aspx" >Danh sách bác sỹ</a></li>
+            </ul>
+            <div class="sub_main_menu"  id="main_menu_mon"> 
+                <span>BỆNH NHÂN </span> 
+            </div>
+            <ul style="display: block;" id="ul_main_menu_mon">
+			 <li><a href="BenhNhan.aspx" >Danh sách bệnh nhân</a></li>
+                <li><a href="Benh.aspx" >Danh sách bệnh</a></li>
+           
+            </ul>  
+              <div class="sub_main_menu"  id="main_menu_mon"> 
+                <span>PHIẾU KHÁM </span> 
+            </div>
+            <ul style="display: block;" id="ul_main_menu_mon">
+			 <li><a href="PhieuKham.aspx" >Danh sách phiếu khám</a></li>
+           
+            </ul>    
+            <ul style="display: block;" id="ul_main_menu_mon">
+			 <li><a href="Admin_ThongTinTinTuc.aspx" >Danh sách tin tức</a></li>
+           
+            </ul>        
+        </div>
+     
+  </div>
+        <div class="contentbodyadmin">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+              <div class="bottom_menu">
+
+        <div class="bottom_content"></div>
+        <p style="padding-top:20px;padding-left:20px">Copyright © 2015 <a href=""></a></p>
+    </div>
+    </form>
+</body>
+</html>

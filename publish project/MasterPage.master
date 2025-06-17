@@ -1,0 +1,165 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>BỆNH VIỆN</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/Main.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+
+        function searchKeyPress(e) {
+            // look for window.event in case event isn't passed in
+            e = e || window.event;
+            if (e.keyCode == 13) {
+                var searchText = document.getElementById('txtSearch').value;
+                window.location.href = "index.aspx?timKiem=" + searchText;
+            }
+        }
+
+        function alertS(stringTB, func) {
+            if (stringTB == undefined) {
+                alert('Đăng ký thành công!');
+            } else {
+                alert(stringTB);
+            }
+            if (func != undefined) {
+                func();
+            }
+        }
+    </script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,vietnamese' rel='stylesheet' type='text/css' />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: xx-large;
+            color: #CC3300;
+        }
+    </style>
+</head>
+<body>
+    <div class="box_top">
+        <% if (Session["maBenhNhan"] == null)
+           {%>
+        <div class="box_top_c">
+            <span><a href="dangnhap.aspx">Đăng nhập</a></span> <span><a href="DangKyNguoiDung.aspx">Đăng ký</a></span>
+        </div>
+        <%}
+           else
+           {%>
+        <div class="box_top_c">
+            <span>Chào mừng <% Response.Write(Session["tenBenhNhan"].ToString());%> </span>
+            <span><a href="index.aspx?thoat=1">Thoat</a></span>
+        </div>
+        <%} 
+        %>
+    </div>
+    <div class="banner">
+        <div class="banner_c">
+            <div class="logo">
+                <strong><span class="auto-style1">BỆNH VIỆN TÂM THẦN ĐÀ NẴNG</span></strong>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="tiem_kiem">
+                <span>
+                    <input value="" id="txtSearch" name="txtSearch" placeholder="Tìm kiếm..." onkeypress="searchKeyPress(event);" /></span>
+            </div>
+            <ul id="nav">
+                <li>
+                    <div class="item_menu"><a href="index.aspx">Trang chủ</a></div>
+                </li>
+                <li>
+                    <div class="item_menu"><a href="DangKyPhieuKhamBenh.aspx">Đăng ký khám bệnh</a></div>
+                </li>
+                <li>
+                    <div class="item_menu"><a href="CacLoaiBenh.aspx">Các loại bệnh</a></div>
+                </li>
+                 <li>
+                    <div class="item_menu"><a href="khaosat.aspx">Khảo sát tâm thần</a></div>
+                </li>
+                <li>
+                    <div class="item_menu"><a href="CacLoaiPhongBan.aspx">Phòng ban</a></div>
+                </li>
+                <li>
+                    <div class="item_menu"><a href="lienhe.aspx">Thông tin liên hệ</a></div>
+                </li>
+                <%if (Session["maBenhNhan"] != null)
+                  {%>
+                <li>
+                    <div class="item_menu"><a href="QuanLyPhieuKham.aspx">Quản lý phiếu khám</a></div>
+                </li>
+                <%
+                  } 
+                %>
+            </ul>
+        </div>
+    </div>
+    <div class="khung_body">
+        <div class="slide">
+            <img src="image/sl_con.jpg" />
+
+        </div>
+
+        <div class="body">
+            <!-- ------------------------------------->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+               
+            </asp:ContentPlaceHolder>
+            <!-- ------------------------------------->
+            <div style="clear: both"></div>
+        </div>
+
+
+        <div class="k_phong_ban">
+            <div style="color: #fff;">CÁC KHOA - PHÒNG BAN</div>
+            <div class="phong">
+                <a>PHÒNG TỔ CHỨC CÁN BỘ</a>
+                <a>PHÒNG KẾ HOẠCH TỔNG HỢP </a>
+
+            </div>
+            <div class="phong">
+                <a>PHÒNG CÔNG NGHỆ THÔNG TIN </a>
+                <a>KHOA DƯỢC </a>
+
+            </div>
+
+            <div class="phong">
+                <a>KHOA NỘI THẬN - NỘI TIẾT </a>
+                <a>NỘI THẦN KINH- CƠ XƯƠNG KHỚP- HUYẾT </a>
+
+            </div>
+
+
+            <div style="clear: both"></div>
+        </div>
+
+    </div>
+    <div class="copyright">
+        <strong>BỆNH VIỆN </strong>
+        <br />
+        Địa chỉ:<br />
+        Số  điện thoại : 
+
+            <div class="mang_xa_hoi">
+                <span><a>
+                    <img src="image/google.png" /></a></span>
+                <span><a>
+                    <img src="image/tww.png" /></a></span>
+                <span><a>
+                    <img src="image/rss.png" /></a></span>
+                <span><a>
+                    <img src="image/youtobe.png" /></a></span>
+                <span><a>
+                    <img src="image/fb.png" /></a></span>
+            </div>
+
+    </div>
+</body>
+</html>
